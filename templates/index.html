@@ -1,5 +1,67 @@
 <!DOCTYPE html>
-<html>
-<head>
-</head>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Popular Item Tracker</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='flatly.min.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+            <div class="container-fluid" id="wrapper">
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-4" id="content">
+                        <h2>Easy to track if items are on stock</h2>
+
+                        <form action="{{ url_for('display') }}" method="POST" role="form">
+                            <div class="form-group">
+                                <div class="input-group">
+									<input name="item_name" type="text" class="form-control" placeholder="Example: LA MAR" aria-label="Todo" aria-describedby="add-btn">
+									<input name="items" type="text" class="form-control" placeholder="Example: https://www.costco.com/la-mer-creme-de-la-mer,-2.0-oz.product.100372155.html" aria-label="Todo" aria-describedby="add-btn">
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-default" id="add-btn">ADD</button>
+                                </span>
+                            	</div>
+                            </div>
+							<ul class="list-group t20">
+								{% for item in myitems %}
+
+									<li class=" row list-group-item">
+											<div class="col-sm-3">Name: {{item.name}} </div>
+											{% for k, v in tracklist.items() %}
+												{{ tracklist[] }}
+											{% endfor %}
+											<div class="col-sm-3">On Stock: {{ item.stock }} </div>
+											<div class="col-sm-3">Following: {{ item.follow }} </div>
+									</li>
+								</a>
+								{% endfor %}
+							</ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+			<footer>
+				<div class="row pad">
+					<div class="col-lg-12 text-center">
+						Copyright &copy; 2021 <strong>Jiahao Liu</strong>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
+	<script>
+	</scrip>
 </html>
